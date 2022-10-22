@@ -23,6 +23,11 @@ const Header = () => {
       </li>
       <li><Link to="/news">News</Link></li>
     </ul>
+    <ul class="menu menu-horizontal p-0">
+        <li ><Link to = "/login">Log in</Link></li>
+        <li ><Link to = "/signup">Sign Up</Link></li>
+        
+    </ul>
   </div>
 </div>
         </div>

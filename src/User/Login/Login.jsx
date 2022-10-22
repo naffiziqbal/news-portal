@@ -5,6 +5,10 @@ import { AuthContext } from '../../UserContext/UserContext';
 const Login = () => {
     const { user } = useContext(AuthContext);
     console.log(user);
+    const handleFromSubmit = (e) => {
+        e.preventDefault();
+        alert("Form Submitted")
+    }
     return (
         <div>
                  <div className="hero min-h-screen bg-base-200">
@@ -13,7 +17,7 @@ const Login = () => {
             <h1 className="text-5xl font-bold">Log In Now</h1>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <div className="card-body">
+            <form onSubmit={handleFromSubmit} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -44,9 +48,9 @@ const Login = () => {
                 </p>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary text-white">Log In</button>
+                <button className="btn btn-primary text-white" type="submit">Log In</button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>

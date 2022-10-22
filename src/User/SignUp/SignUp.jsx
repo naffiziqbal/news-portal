@@ -16,9 +16,12 @@ const SignUp = () => {
         const user = result.user;
         console.log(user);
         form.reset();
+        setUser(user)
     } )
     .catch((err)=> {
         console.log(err.message);
+        setUser(null)
+
         
     })
     

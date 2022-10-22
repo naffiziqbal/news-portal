@@ -1,19 +1,45 @@
-import React, { createContext } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import app from "../Firebase/Firebase";
-import {createUserWithEmailAndPassword, getAuth} from "firebase/auth"
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { current } from "daisyui/src/colors";
 
 export const AuthContext = createContext();
-const auth = getAuth(app)
-
+const auth = getAuth(app);
 
 const UserContext = ({ children }) => {
-  const user = { name: "nafiz", id : 20 }
+  const [user, setUser] = useState(null);
 
-  
-  const createUser = (email, password)=>{
-      return createUserWithEmailAndPassword(auth, email, password)
+//   Create user 
+  const createUser = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  // Google LogIn
+
+//Github Login
+
+//Log Out 
+const logOutUser = ()=> {
+    signOut(auth)
+}
+
+
+
+
+useEffect(() =>{
+   const unsubscribe =  onAuthStateChanged(auth, (currentUser)=> {
+        setUser(currentUser);
+
+    })
+    return ()=> {
+        unsubscribe()
     }
-    const value = {auth, user, createUser };
+},[])
+
+
+  //  Context Value =======
+  // ============
+  const value = { auth, user, createUser, logOutUser };
   return (
     <div>
       <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

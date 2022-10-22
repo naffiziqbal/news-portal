@@ -80,6 +80,14 @@ const SignUp = () => {
                 <button className="btn btn-primary text-white" type="submit">Sign Up</button>
               </div>
             </form>
+            <div className="thirdParty flex justify-center flex-col p-4">
+            <button className="my-2 border border-yellow-400 flex items-center rounded-lg justify-evenly hover:bg-slate-200 duration-300">
+                <img className="w-12 rounded-full" src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/d2abd662597191.5a9589b09ddf5.jpg" alt="" />
+                Log In With Google</button>
+            <button className="border border-yellow-400 flex items-center rounded-lg justify-evenly hover:bg-slate-200 duration-300">
+                <img className="w-8 rounded-full"  src="https://www.kindpng.com/picc/m/718-7187053_close-eyes-vector-github-logo-icon-png-transparent.png" alt="" />
+                Log In With Github</button>
+            </div>
           </div>
         </div>
       </div>

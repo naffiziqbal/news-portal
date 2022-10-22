@@ -6,7 +6,7 @@ const Profile = () => {
     return (
         <div>
             {
-                user.email
+                user?.displayName ? user?.displayName :   user?.email
             }
         </div>
     );

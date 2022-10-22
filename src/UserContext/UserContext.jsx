@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import app from "../Firebase/Firebase";
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { current } from "daisyui/src/colors";
 
 export const AuthContext = createContext();
@@ -13,6 +13,11 @@ const UserContext = ({ children }) => {
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
+
+  //Log In User
+  const userLogIn =(email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  }
 
   // Google LogIn
 
@@ -39,7 +44,7 @@ useEffect(() =>{
 
   //  Context Value =======
   // ============
-  const value = { auth, user, createUser, logOutUser };
+  const value = { auth, user, createUser, logOutUser, userLogIn };
   return (
     <div>
       <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
